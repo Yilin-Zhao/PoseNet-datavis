@@ -1,5 +1,4 @@
 let data;
-let p1, p2;
 
 function preload(){
   data = loadJSON("pose.json");
@@ -17,6 +16,32 @@ function setup() {
 
 function draw() {
   background(100);
+  // draw lines
+  //print(findBodypoint("leftShoulder"));
+  // left arm
+  combineTwoPoints("leftShoulder", "leftElbow");
+  combineTwoPoints("leftElbow", "leftWrist");
+  // right arm
+  combineTwoPoints("rightShoulder", "rightElbow");
+  combineTwoPoints("rightElbow", "rightWrist");
+  // left leg
+  combineTwoPoints("leftHip", "leftKnee");
+  combineTwoPoints("leftKnee", "leftAnkle");
+  // right leg
+  combineTwoPoints("rightHip", "rightKnee");
+  combineTwoPoints("rightKnee", "rightAnkle");
+  // body
+  combineTwoPoints("leftShoulder", "rightHip");
+  combineTwoPoints("rightShoulder", "leftHip");
+  combineTwoPoints("leftShoulder", "rightShoulder");
+  combineTwoPoints("leftHip", "rightHip");
+  // neck
+  let nose = findBodypoint("nose");
+  let leftShoulder = findBodypoint("leftShoulder");
+  let rightShoulder = findBodypoint("rightShoulder");
+  line(mapX(nose)+20, mapY(nose)-10, 0.5*(mapX(leftShoulder)+mapX(rightShoulder)), 0.5*(mapY(leftShoulder)+mapY(rightShoulder)));
+
+  // draw points
   for(let i = 0; i<data.bodypoints.length; i++){
     let c = data.bodypoints[i];
     let xm = mapX(c);
@@ -26,26 +51,7 @@ function draw() {
       circle(xm+20, ym-10, 100);
     }
     circle(xm, ym, 10);
-
   }
-  
-  // draw line
-  //print(findBodypoint("leftShoulder"));
-  combineTwoPoints("leftShoulder", "leftElbow");
-
-  combineTwoPoints("leftElbow", "leftWrist");
-
-  combineTwoPoints("rightShoulder", "rightElbow");
-
-  combineTwoPoints("rightElbow", "rightWrist");
-
-  combineTwoPoints("leftHip", "leftKnee");
-
-  combineTwoPoints("leftKnee", "leftAnkle");
-
-  combineTwoPoints("rightHip", "rightKnee");
-
-  combineTwoPoints("rightKnee", "rightAnkle");
 
 }
 
