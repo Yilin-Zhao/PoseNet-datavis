@@ -31,51 +31,19 @@ function draw() {
   
   // draw line
   //print(findBodypoint("leftShoulder"));
-  // p1 = findBodypoint("leftShoulder");
-  // p2 = findBodypoint("leftElbow");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
-
   combineTwoPoints("leftShoulder", "leftElbow");
-
-  // p1 = findBodypoint("leftElbow");
-  // p2 = findBodypoint("leftWrist");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
 
   combineTwoPoints("leftElbow", "leftWrist");
 
-  // p1 = findBodypoint("rightShoulder");
-  // p2 = findBodypoint("rightElbow");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
-
   combineTwoPoints("rightShoulder", "rightElbow");
-
-  // p1 = findBodypoint("rightElbow");
-  // p2 = findBodypoint("rightWrist");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
 
   combineTwoPoints("rightElbow", "rightWrist");
 
-  // p1 = findBodypoint("leftHip");
-  // p2 = findBodypoint("leftKnee");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
-
   combineTwoPoints("leftHip", "leftKnee");
-
-  // p1 = findBodypoint("leftKnee");
-  // p2 = findBodypoint("leftAnkle");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
 
   combineTwoPoints("leftKnee", "leftAnkle");
 
-  // p1 = findBodypoint("rightHip");
-  // p2 = findBodypoint("rightKnee");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
-
   combineTwoPoints("rightHip", "rightKnee");
-
-  // p1 = findBodypoint("rightKnee");
-  // p2 = findBodypoint("rightAnkle");
-  // line(mapX(p1), mapY(p1), mapX(p2), mapY(p2));
 
   combineTwoPoints("rightKnee", "rightAnkle");
 
