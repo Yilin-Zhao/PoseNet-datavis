@@ -5,7 +5,7 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(1500, 1500);
   //console.log(data);
   // for(let i = 0; i<data.bodypoints.length; i++){
   //   let c = data.bodypoints[i];
@@ -40,7 +40,7 @@ function draw() {
   let nose = findBodypoint("nose");
   let leftShoulder = findBodypoint("leftShoulder");
   let rightShoulder = findBodypoint("rightShoulder");
-  line(mapX(nose)+20, mapY(nose)-10, 0.5*(mapX(leftShoulder)+mapX(rightShoulder)), 0.5*(mapY(leftShoulder)+mapY(rightShoulder)));
+  line(mapX(nose)+20*(width/1000), mapY(nose)-10*(width/1000), 0.5*(mapX(leftShoulder)+mapX(rightShoulder)), 0.5*(mapY(leftShoulder)+mapY(rightShoulder)));
 
   // draw points
   for(let i = 0; i<data.bodypoints.length; i++){
@@ -48,12 +48,19 @@ function draw() {
     let xm = mapX(c);
     let ym = mapY(c);
     
-    if(c.part == "nose"){
-      strokeWeight(4);
-      circle(xm+20, ym-10, 100);
+    strokeWeight(4);
+    if(c.part == "leftEar" || c.part == "rightEar"){
+      ellipse(xm, ym, 10*(width/1000), 20*(width/1000));
     }
-    //strokeWeight(1);
-    circle(xm, ym, 10);
+    if(c.part == "leftEye" || c.part == "rightEye"){
+      circle(xm, ym, 20*(width/1000));
+    }
+    circle(xm, ym, 10*(width/1000));
+    if(c.part == "nose"){
+      //circle(xm+20, ym-10, 100*(width/1000));
+      ellipse(xm+30*(width/2000), ym-10*(width/2000), 90*(width/1000), 100*(width/1000));
+    }
+    
   }
 
 }
@@ -73,12 +80,12 @@ function findBodypoint(partName) {
 }
 
 function mapX(elem){
-  let xmapped = map(elem.x-200, 0-200, 500-200, 0-200, 1000-200);
+  let xmapped = map(elem.x-200, 0-200, 500-200, 0-200, width-200);
   return xmapped;
 }
 
 function mapY(elem){
-  let ymapped = map(elem.y-60, 0-60, 500-60, 0-60, 1000-60);
+  let ymapped = map(elem.y-60, 0-60, 500-60, 0-60, height-60);
   return ymapped;
 }
 
