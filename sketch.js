@@ -16,6 +16,7 @@ function setup() {
 
 function draw() {
   background(100);
+  strokeWeight(4);
   // draw lines
   //print(findBodypoint("leftShoulder"));
   // left arm
@@ -48,8 +49,10 @@ function draw() {
     let ym = mapY(c);
     
     if(c.part == "nose"){
+      strokeWeight(4);
       circle(xm+20, ym-10, 100);
     }
+    //strokeWeight(1);
     circle(xm, ym, 10);
   }
 
