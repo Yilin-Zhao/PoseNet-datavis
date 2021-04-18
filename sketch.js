@@ -49,16 +49,20 @@ function draw() {
     let ym = mapY(c);
     
     strokeWeight(4);
+    fill(255);
     if(c.part == "leftEar" || c.part == "rightEar"){
       ellipse(xm, ym, 10*(width/1000), 20*(width/1000));
     }
     if(c.part == "leftEye" || c.part == "rightEye"){
+      fill(0);
       circle(xm, ym, 20*(width/1000));
     }
+    fill(255);
     circle(xm, ym, 10*(width/1000));
     if(c.part == "nose"){
-      //circle(xm+20, ym-10, 100*(width/1000));
       ellipse(xm+30*(width/2000), ym-10*(width/2000), 90*(width/1000), 100*(width/1000));
+      line(xm-2.5*(width/1500), ym, xm-5*(width/1500), ym+8*(width/1500));
+      line(xm+2.5*(width/1500), ym, xm+5*(width/1500), ym+8*(width/1500));
     }
     
   }
