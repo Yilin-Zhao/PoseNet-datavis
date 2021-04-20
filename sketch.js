@@ -14,37 +14,40 @@ function setup() {
   // }
 }
 
+let p = 0;
 function draw() {
-  background(100);
   strokeWeight(4);
-  for(let n = 0; n < data.length; n++){
+  //console.info(data.poses.length)
+  //noLoop();
+  for(let n = 0;n < data.poses.length;){
+    background(100);
     // draw lines
     //print(findBodypoint("leftShoulder"));
     // left arm
-    combineTwoPoints("leftShoulder", "leftElbow", n);
-    combineTwoPoints("leftElbow", "leftWrist", n);
+    combineTwoPoints("leftShoulder", "leftElbow", p);
+    combineTwoPoints("leftElbow", "leftWrist", p);
     // right arm
-    combineTwoPoints("rightShoulder", "rightElbow", n);
-    combineTwoPoints("rightElbow", "rightWrist", n);
+    combineTwoPoints("rightShoulder", "rightElbow", p);
+    combineTwoPoints("rightElbow", "rightWrist", p);
     // left leg
-    combineTwoPoints("leftHip", "leftKnee", n);
-    combineTwoPoints("leftKnee", "leftAnkle", n);
+    combineTwoPoints("leftHip", "leftKnee", p);
+    combineTwoPoints("leftKnee", "leftAnkle", p);
     // right leg
-    combineTwoPoints("rightHip", "rightKnee", n);
-    combineTwoPoints("rightKnee", "rightAnkle", n);
+    combineTwoPoints("rightHip", "rightKnee", p);
+    combineTwoPoints("rightKnee", "rightAnkle", p);
     // body
-    combineTwoPoints("leftShoulder", "rightHip", n);
-    combineTwoPoints("rightShoulder", "leftHip", n);
-    combineTwoPoints("leftShoulder", "rightShoulder", n);
-    combineTwoPoints("leftHip", "rightHip", n);
+    combineTwoPoints("leftShoulder", "rightHip", p);
+    combineTwoPoints("rightShoulder", "leftHip", p);
+    combineTwoPoints("leftShoulder", "rightShoulder", p);
+    combineTwoPoints("leftHip", "rightHip", p);
     // neck
-    let nose = findBodypoint("nose", n);
-    let leftShoulder = findBodypoint("leftShoulder", n);
-    let rightShoulder = findBodypoint("rightShoulder", n);
-    line(mapX(nose)+20*(width/1000), mapY(nose)-10*(width/1000), 0.5*(mapX(leftShoulder)+mapX(rightShoulder)), 0.5*(mapY(leftShoulder)+mapY(rightShoulder)));
+    // let nose = findBodypoint("nose", n);
+    // let leftShoulder = findBodypoint("leftShoulder", n);
+    // let rightShoulder = findBodypoint("rightShoulder", n);
+    // line(mapX(nose)+20*(width/1000), mapY(nose)-10*(width/1000), 0.5*(mapX(leftShoulder)+mapX(rightShoulder)), 0.5*(mapY(leftShoulder)+mapY(rightShoulder)));
 
-    let leftEar = findBodypoint("leftEar", n);
-    let rightEar = findBodypoint("rightEar", n);
+    // let leftEar = findBodypoint("leftEar", n);
+    // let rightEar = findBodypoint("rightEar", n);
   //   // draw points
   //   for(let i = 0; i<data[n].bodypoints.length; i++){
   //     let c = data[n].bodypoints[i];
@@ -77,6 +80,7 @@ function draw() {
     
   //   }
   }
+  p++;
 }
 //   // draw lines
 //   //print(findBodypoint("leftShoulder"));
@@ -158,7 +162,7 @@ function findBodypoint(partName, i) {
   function bodypointHasName(point) {
     return point.part === partName;
   }
-  return data[i].bodypoints.find(bodypointHasName);
+  return data.poses[i].bodypoints.find(bodypointHasName);
 }
 
 function mapX(elem){
